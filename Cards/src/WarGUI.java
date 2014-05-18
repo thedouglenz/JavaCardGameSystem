@@ -11,8 +11,9 @@ import java.util.ArrayList;
  *
  */
 public class WarGUI extends JFrame {
-    private static final Dimension WINDOWSIZE = new Dimension(500, 500);
+    private static final Dimension WINDOWSIZE = new Dimension(900, 500);
     private static final String WINDOWTITLE = "Java War Game";
+    private static final String CARDBACKHORIZONTAL = "assets/backh.png";
     private static final String CARDBACKVERTICAL = "assets/backv.png";
     private static final int VERTICAL = 1;
     private static final int HORIZONTAL = 2;
@@ -40,8 +41,8 @@ public class WarGUI extends JFrame {
         this.warController = warController;
 
         // Give the GUI some more components
-        playersOverturned = new CardImagePanel("assets/backh.png", HORIZONTAL);
-        computersOverturned = new CardImagePanel("assets/backh.png", HORIZONTAL);
+        playersOverturned = new CardImagePanel(CARDBACKHORIZONTAL, HORIZONTAL);
+        computersOverturned = new CardImagePanel(CARDBACKHORIZONTAL, HORIZONTAL);
 
 
         playersOverturned.addMouseListener(new MouseListener() {
@@ -53,13 +54,29 @@ public class WarGUI extends JFrame {
                 // Update the view after the new cards are played
                 ArrayList<Card> playerCards = warController.getTableCards()[0];
                 ArrayList<Card> computerCards = warController.getTableCards()[1];
-                playerPanel.add(new CardImagePanel(playerCards.get(playerCards.size()-1).imagePath, VERTICAL) );
-                computerPanel.add(new CardImagePanel(computerCards.get(computerCards.size()-1).imagePath, VERTICAL));
+                playerPanel.add( new CardImagePanel( playerCards.get( playerCards.size() - 1 ).imagePath, VERTICAL) );
+                computerPanel.add( new CardImagePanel( computerCards.get( computerCards.size() - 1 ).imagePath, VERTICAL));
+                System.out.println(computerCards.get(playerCards.size()-1).imagePath);
+                System.out.println(computerCards.get(computerCards.size()-1).imagePath);
+
+                playerPanel.updateUI();
+                computerPanel.updateUI();
+
+                try {
+                    Thread.sleep(1000);
+                } catch(InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+
+                warController.processLatestTable();
 
                 // Check the game state
                 if(warController.getGameState() == GameState.WARRING) {
                     computerPanel.add(new CardImagePanel(CARDBACKVERTICAL, VERTICAL));
                     playerPanel.add(new CardImagePanel(CARDBACKVERTICAL, VERTICAL));
+                } else {
+                    computerPanel.removeAll();
+                    playerPanel.removeAll();
                 }
                 displayWindow();
             }

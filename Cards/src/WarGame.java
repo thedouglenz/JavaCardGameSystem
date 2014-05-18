@@ -9,7 +9,9 @@ public class WarGame {
         // Create the view object and pass it the controller object
         WarGUI window = new WarGUI(warController);
 
+
         // Display the view
-        window.displayWindow();
+        //window.displayWindow();
+        GUITest guiTest = new GUITest();
     }
 }

@@ -13,7 +13,7 @@ public class Hand {
     }
 
     public int getSize() {
-        return this.size;
+        return cards.size();
     }
 
     public void printHand() {
