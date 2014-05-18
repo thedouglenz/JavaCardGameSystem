@@ -11,7 +11,7 @@ public class WarGame {
 
 
         // Display the view
-        //window.displayWindow();
-        GUITest guiTest = new GUITest();
+        window.displayWindow();
+        //GUITest guiTest = new GUITest();
     }
 }
