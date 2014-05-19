@@ -3,6 +3,8 @@ JavaCardGameSystem
 
 A card game system written in Java upon which it is possible to build various games
 
+<h2>Classes in this project</h2>
+
 **Deck** <br>
 A deck of cards. Contains the shuffle operation, print deck, peek top card, peek bottom card, remove top card, and deal hand
 
