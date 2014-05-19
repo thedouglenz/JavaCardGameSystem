@@ -46,7 +46,7 @@ public class PokerHandEvaluator5Card {
                 haveHandTypes[5] = true;
             }
             if(howMany[i] == 2) {
-                if(haveHandTypes[7] == true){
+                if(haveHandTypes[7]){
                     haveHandTypes[6] = true;
                     // figure out the higher of the two
                 } else {

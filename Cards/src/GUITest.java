@@ -10,7 +10,7 @@ public class GUITest extends JFrame {
 
     public GUITest() {
 
-        panel = new JPanel(new FlowLayout(2,2,2));
+        panel = new JPanel(new FlowLayout(FlowLayout.CENTER,2,2));
 
         testDeck = new Deck();
 

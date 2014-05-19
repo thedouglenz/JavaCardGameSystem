@@ -1,7 +1,10 @@
 /**
- * Created by Doug on 5/18/2014.
- */
+     ${PROJECT_NAME}
+     05, 2014
+     Created by Doug on 5/18/2014.
 
+     ${PACKAGE_NAME}
+ **/
 public class Card {
 
     int value;
