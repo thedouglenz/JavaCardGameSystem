@@ -27,11 +27,9 @@ public class WarGUI extends JFrame {
     private WarController warController;
 
     public WarGUI(final WarController wc) {
-
-        this.setBackground(Color.BLACK);
+        // Some window adjustments
+        this.getContentPane().setBackground(Color.BLACK);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        // Set constants
         this.setPreferredSize(WINDOWSIZE);
         this.setTitle(WINDOWTITLE);
 
@@ -50,7 +48,7 @@ public class WarGUI extends JFrame {
         // Give the GUI access to its controller
         this.warController = wc;
 
-        // Give the GUI some more components
+        // Give the GUI some components
         playersOverturned = new CardImagePanel(CARDBACKHORIZONTAL, HORIZONTAL);
         computersOverturned = new CardImagePanel(CARDBACKHORIZONTAL, HORIZONTAL);
 
