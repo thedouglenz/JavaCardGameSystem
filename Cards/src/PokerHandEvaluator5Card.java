@@ -1,0 +1,102 @@
+/**
+ * Created by douglas lenz on 5/18/2014.
+ */
+public class PokerHandEvaluator5Card {
+    private final int KNOWNHANDS = 9;
+    private String[] handNames;
+    private boolean[] haveHandTypes;
+    private int[] haveHandValues;
+
+    private Hand thisHand;
+
+    public PokerHandEvaluator5Card(Hand hand) {
+        this.thisHand = hand;
+        evaluate();
+    }
+
+    public void evaluate() {
+        handNames = new String[] {"Straight flush", "Four of a kind", "Full house", "Flush", "Straight", "Three of a kind", "Two pair", "One Pair","High card"} ;
+        haveHandTypes = new boolean[9]; // 0:Straight flush, 1: Four of a kind, 2: Full house, 3: Flush, 4: Straight, 5: Three of a kind, 6: Two pair, 7: One pair, 8: High card
+        haveHandValues = new int[9];
+
+        discoverOfAKinds();
+        discoverFullHouse();
+        discoverFlushes();
+
+        printWhatThisHandHas();
+    }
+
+    private int[] matchValues() {
+        int[] howMany = new int[13];
+
+        for(Card c : thisHand.getCards()) {
+            howMany[c.getValue()-1]++;
+        }
+        return howMany;
+    }
+
+    private void discoverOfAKinds() {
+        int[] howMany = matchValues();
+
+        for(int i = 0; i < howMany.length;  ++i) {
+            if(howMany[i] == 4) {
+                haveHandTypes[1] = true;
+            }
+            if(howMany[i] == 3) {
+                haveHandTypes[5] = true;
+            }
+            if(howMany[i] == 2) {
+                if(haveHandTypes[7] == true){
+                    haveHandTypes[6] = true;
+                    // figure out the higher of the two
+                } else {
+                    haveHandTypes[7] = true;
+                }
+                if(haveHandValues[7] < i)
+                    haveHandValues[7] = i;
+            }
+            if(howMany[i] == 1){
+                haveHandTypes[8] = true;
+                if(haveHandValues[8] < i)
+                    haveHandValues[8] = i;
+            }
+        }
+    }
+
+    private void discoverFlushes() {
+        // right off the bat, let's say the hand has a flush and prove ourselves wrong.
+        boolean flush = true;
+        for(int i = 0; i < thisHand.getCards().size() - 1; ++i) {
+            if (thisHand.getCards().get(i).getSuit() == thisHand.getCards().get(i+1).getSuit()) {
+                flush = false;
+            }
+        }
+        haveHandTypes[3] = flush;
+    }
+
+    private void discoverFullHouse() {
+        int[] howMany = matchValues();
+        boolean two = false;
+        boolean three = false;
+
+        for(int i = 0; i < howMany.length; ++i) {
+            if(howMany[i] == 2) {
+                two = true;
+            }
+            if(howMany[i] == 3) {
+                three = true;
+            }
+        }
+        if(two && three) {
+            haveHandTypes[2] = true;
+        }
+    }
+
+    public void printWhatThisHandHas() {
+        for(int i = 0; i < KNOWNHANDS; ++i) {
+            if(haveHandTypes[i]) {
+                System.out.println(handNames[i]);
+            }
+        }
+    }
+}

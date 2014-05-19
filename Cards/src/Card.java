@@ -18,4 +18,12 @@ public class Card {
         System.out.println(this.value + " " + this.suit);
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public Suit getSuit() {
+        return this.suit;
+    }
+
 }
