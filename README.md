@@ -7,7 +7,7 @@ A card game system written in Java upon which it is possible to build various ga
 <h2>Classes in this project</h2>
 
 **Deck** <br>
-A deck of cards. Contains the shuffle operation, print deck, peek top card, peek bottom card, remove top card, and deal hand
+A deck of cards. Contains the shuffle operation, print deck, peek top card, peek bottom card, remove top card, add to top, add to bottom, and deal hand
 
 **Hand** <br>
 A player's hand. Contains remove first card (for games like War), print hand, get size, and add to hand
