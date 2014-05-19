@@ -67,7 +67,7 @@ public class PokerHandEvaluator5Card {
         // right off the bat, let's say the hand has a flush and prove ourselves wrong.
         boolean flush = true;
         for(int i = 0; i < thisHand.getCards().size() - 1; ++i) {
-            if (thisHand.getCards().get(i).getSuit() == thisHand.getCards().get(i+1).getSuit()) {
+            if (thisHand.getCards().get(i).getSuit() != thisHand.getCards().get(i+1).getSuit()) {
                 flush = false;
             }
         }
