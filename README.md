@@ -39,3 +39,8 @@ java GUITest
 javac WarGame.java<br>
 java WarGame
 
+**Assets** <br>
+All card images are provided in Cards/assets/. They are named as such: <br>
+8 of Clubs => c8.png <br>
+King of Hearts => h13.png
+
