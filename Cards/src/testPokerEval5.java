@@ -7,17 +7,18 @@ public class testPokerEval5 {
     A test class to ensure that the Poker Hand Evaluator is working correctly
      */
     public static void main(String[] args) {
-        Deck testDeck = new Deck();
 
-        testDeck.shuffleDeck();
+        for(int i=0; i < 50; ++i) {
+            Deck testDeck = new Deck();
 
-        Hand testHand = testDeck.dealHand(5);
+            testDeck.shuffleDeck();
 
-        testHand.printHand();
-
-        System.out.println();
-
-        PokerHandEvaluator5Card testEvaluator = new PokerHandEvaluator5Card(testHand);
+            Hand testHand = testDeck.dealHand(5);
+            testHand.printHand();
+            System.out.println();
+            PokerHandEvaluator5Card testEvaluator = new PokerHandEvaluator5Card(testHand);
+        }
+        //PokerHandEvaluator5Card testEvaluator = new PokerHandEvaluator5Card(testHand);
 
     }
 

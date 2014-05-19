@@ -56,7 +56,7 @@ public class WarController {
     }
 
     public void processLatestTable() { // Separate from laying cards on table so that the view has a chance to display the cards
-        switch (whoWon()) {
+        switch ( whoWon() ) {
             case 1: // player 1 wins
                 player1.addToHand(table.pickupCards());
                 this.gameState = GameState.STABLE;
