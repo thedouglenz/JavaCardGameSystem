@@ -1,7 +1,14 @@
 import java.util.ArrayList;
 
 /**
- * Created by Doug on 5/18/2014.
+ * Created by Douglas Lenz on 5/18/2014.
+ *
+ * A Deck class. Represents a standard playing card deck of 52 cards. Constructor initializes all cards to the deck in order:
+ * Hearts, Diamonds, Spades, Clubs. Has operations to shuffle the deck, print to console, peek top card, peek bottom card, remove top card
+ * deal a hand, and give the current size of the deck.
+ *
+ * Dealing a hand operation actually removes cards from the instance of deck, so it is important to check how large or small the
+ * deck is. The same goes for removing top card.
  */
 public class Deck {
 
@@ -60,6 +67,21 @@ public class Deck {
             cardsForHand.add(cards.remove(0));
         }
         return new Hand(cardsForHand);
+    }
+
+    public void addToBottom(Card c) {
+        cards.add( c );
+    }
+    public void addToBottom(ArrayList<Card> c) {
+        cards.addAll( c );
+    }
+
+    public void addToTop(Card c) {
+        cards.add( 0, c );
+    }
+
+    public void addToTop(ArrayList<Card> c) {
+        cards.addAll( 0, c );
     }
 
     public int getSize() {

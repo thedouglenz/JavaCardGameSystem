@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 
 /**
- * Created by Doug on 5/18/2014.
+ * Created by Douglas Lenz on 5/18/2014.
+ *
+ * A Player class. Player's can have a player number, a Hand, and perform operations like adding cards to their hand, playing a card from their hand,
+ * checking whether their hand is empty, ...
  */
 public class Player {
     private int number;

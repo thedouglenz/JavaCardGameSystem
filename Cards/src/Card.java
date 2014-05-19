@@ -1,9 +1,10 @@
 /**
-     ${PROJECT_NAME}
      05, 2014
      Created by Doug on 5/18/2014.
 
-     ${PACKAGE_NAME}
+    A Card class to encapsulate the value(or rank), suit, and associated image of a card. Associated images are String relative paths.
+    Use image path with BufferedImage
+
  **/
 public class Card {
 
@@ -23,6 +24,10 @@ public class Card {
 
     public int getValue() {
         return value;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 
     public Suit getSuit() {

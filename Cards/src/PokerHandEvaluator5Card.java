@@ -1,5 +1,8 @@
 /**
  * Created by douglas lenz on 5/18/2014.
+ *
+ * A Poker Hand Evaluator class for hands with 5 cards. Each hand needs its own instance of this class, and it is created by passing the hand into the constructor
+ * To evaluate a player's hand, pass Player.getHand() to the evaluator.
  */
 public class PokerHandEvaluator5Card {
     private final int KNOWNHANDS = 9;
@@ -22,6 +25,7 @@ public class PokerHandEvaluator5Card {
         discoverOfAKinds();
         discoverFullHouse();
         discoverFlushes();
+        discoverStraights();
 
         printWhatThisHandHas();
     }
@@ -89,6 +93,21 @@ public class PokerHandEvaluator5Card {
         }
         if(two && three) {
             haveHandTypes[2] = true;
+        }
+    }
+
+    private void discoverStraights() {
+        int howMany[] = matchValues();
+        int straight = 0;
+        for(int i : howMany) {
+            if( i >= 1 ){
+                straight++;
+            } else if ( i == 0 ) {
+                straight=0;
+            }
+            if(straight == 5) {
+                haveHandTypes[4] = true;
+            }
         }
     }
 

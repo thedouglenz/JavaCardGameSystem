@@ -6,7 +6,10 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by Doug on 5/18/2014.
+ * Created by Douglas Lenz on 5/18/2014.
+ *
+ * Just a Swing visualization of a Card so you can toy around with GUIs. Pass a filename into the constructor and what orientation the card image is,
+ * not what you want it to be. If you have a Card, pass in Card.getImagePath() to the constructor.
  */
 public class CardImagePanel extends JPanel {
 

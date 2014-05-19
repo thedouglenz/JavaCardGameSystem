@@ -5,9 +5,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 /**
- * Created by Doug on 5/18/2014.
+ * Created by Douglas Lenz on 5/18/2014.
  *
- * This is the main window that will be used as the view for the application when it opens.
+ * This is the main window that will be used as the view for a War game when it opens.
  *
  */
 public class WarGUI extends JFrame {

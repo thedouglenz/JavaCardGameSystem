@@ -3,6 +3,9 @@ import java.awt.*;
 
 /**
  * Created by douglas lenz on 5/18/2014.
+ *
+ * Quick GUI test
+ *
  */
 public class GUITest extends JFrame {
     Deck testDeck;

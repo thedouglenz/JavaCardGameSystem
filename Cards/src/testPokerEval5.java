@@ -3,6 +3,9 @@
  */
 public class testPokerEval5 {
 
+    /*
+    A test class to ensure that the Poker Hand Evaluator is working correctly
+     */
     public static void main(String[] args) {
         Deck testDeck = new Deck();
 
