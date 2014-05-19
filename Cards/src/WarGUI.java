@@ -25,7 +25,7 @@ public class WarGUI extends JFrame {
 
     private WarController warController;
 
-    public WarGUI(final WarController warController) {
+    public WarGUI(final WarController wc) {
         // Set constants
         this.setPreferredSize(WINDOWSIZE);
         this.setTitle(WINDOWTITLE);
@@ -38,7 +38,7 @@ public class WarGUI extends JFrame {
         middleOfWindow.add(playerPanel, BorderLayout.SOUTH);
 
         // Give the GUI access to its controller
-        this.warController = warController;
+        this.warController = wc;
 
         // Give the GUI some more components
         playersOverturned = new CardImagePanel(CARDBACKHORIZONTAL, HORIZONTAL);
@@ -54,16 +54,20 @@ public class WarGUI extends JFrame {
                 // Update the view after the new cards are played
                 ArrayList<Card> playerCards = warController.getTableCards()[0];
                 ArrayList<Card> computerCards = warController.getTableCards()[1];
-                playerPanel.add( new CardImagePanel( playerCards.get( playerCards.size() - 1 ).imagePath, VERTICAL) );
-                computerPanel.add( new CardImagePanel( computerCards.get( computerCards.size() - 1 ).imagePath, VERTICAL));
-                System.out.println(computerCards.get(playerCards.size()-1).imagePath);
-                System.out.println(computerCards.get(computerCards.size()-1).imagePath);
 
-                playerPanel.updateUI();
-                computerPanel.updateUI();
+                computerPanel.add( new CardImagePanel( computerCards.get( computerCards.size() - 1 ).imagePath, VERTICAL));
+                playerPanel.add( new CardImagePanel( playerCards.get( playerCards.size() - 1 ).imagePath, VERTICAL) );
+                playerPanel.revalidate();
+                computerPanel.revalidate();
+                refresh();
+
+                System.out.println(playerCards.get(playerCards.size()-1).imagePath); // -- DEBUG
+                System.out.println(computerCards.get(computerCards.size()-1).imagePath); // -- DEBUG
+
+
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch(InterruptedException ex) {
                     ex.printStackTrace();
                 }
@@ -78,7 +82,8 @@ public class WarGUI extends JFrame {
                     computerPanel.removeAll();
                     playerPanel.removeAll();
                 }
-                displayWindow();
+
+                //refresh();
             }
 
             @Override
@@ -115,6 +120,12 @@ public class WarGUI extends JFrame {
         this.getContentPane().setBackground(Color.DARK_GRAY);
         this.pack();
         this.setVisible(true);
+    }
+
+    private void refresh() {
+        this.repaint();
+        this.revalidate();
+        this.repaint();
     }
 
 }
