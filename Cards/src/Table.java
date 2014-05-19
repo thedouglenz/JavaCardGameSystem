@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Created by Douglas lenz on 5/18/2014.
+ * Created by Douglas Lenz on 5/18/2014.
  *
  * Table is the playing table. It is constructed by passing a new instance the number of SIDES to the table, usually either 1 for a game where cards are placed in the middle,
  * or N if there are N players for games like Rummy where cards are placed in front of the Player. Player numbers should correspond with side numbers.

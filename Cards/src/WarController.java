@@ -46,36 +46,32 @@ public class WarController {
         player2.setHand(deck.dealHand(26));
     }
 
-    public void player1Action() {
+    public void player1Action() { // Lay cards on table
 
         // First the player lays down a card on his/her side of the table
         table.layCard(player1.playCard(), player1.getNumber());
 
         // Then the computer lays down a card on its side of the table
         table.layCard(player2.playCard(), player2.getNumber());
-
-        // Then a comparison is made between the values of all cards on the table
     }
 
-    public void processLatestTable() {
+    public void processLatestTable() { // Separate from laying cards on table so that the view has a chance to display the cards
         switch (whoWon()) {
-            case 1:
+            case 1: // player 1 wins
                 player1.addToHand(table.pickupCards());
                 this.gameState = GameState.STABLE;
                 break;
-            case 2:
+            case 2: // player 2 wins
                 player2.addToHand(table.pickupCards());
                 this.gameState = GameState.STABLE;
                 break;
-            case -1:
+            case -1: // tie
                 // No player won this round yet, there is a tie.
                 // Put one card out there face down
                 // Allow the player to perform the play action again
                 this.gameState = GameState.WARRING;
                 break;
         }
-        System.out.println("Player 1 cards in hand: " + player1.getCurrentHandSize());
-        System.out.println("Player 2 cards in hand: " + player2.getCurrentHandSize());
     }
 
     public int whoWon() {

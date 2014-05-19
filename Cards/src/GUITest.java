@@ -6,6 +6,9 @@ import java.awt.*;
  *
  * Quick GUI test
  *
+ * Just new an instance up in the main function to ensure yourself all the cards can be displayed.
+ * Tests a full deck of cards, unshuffled.
+ *
  */
 public class GUITest extends JFrame {
     Deck testDeck;
