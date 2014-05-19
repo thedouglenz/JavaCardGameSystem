@@ -54,18 +54,7 @@ public class WarController {
         // Then the computer lays down a card on its side of the table
         table.layCard(player2.playCard(), player2.getNumber());
 
-        // ----- DEBUG
-        System.out.println("Table Side 1:");
-        for(Card c : table.getSideCards(player1.getNumber())) {
-            System.out.println(c.value + " " + c.suit + "\t");
-        }
-        System.out.println("Table Side 2:");
-        for(Card c : table.getSideCards(player2.getNumber())) {
-            System.out.println(c.value + " "  + c.suit + "\t");
-        }
-
         // Then a comparison is made between the values of all cards on the table
-
     }
 
     public void processLatestTable() {
@@ -73,19 +62,16 @@ public class WarController {
             case 1:
                 player1.addToHand(table.pickupCards());
                 this.gameState = GameState.STABLE;
-                System.out.println("Player 1 wins this round"); // -- DEBUG
                 break;
             case 2:
                 player2.addToHand(table.pickupCards());
                 this.gameState = GameState.STABLE;
-                System.out.println("Player 2 wins this round"); // -- DEBUG
                 break;
             case -1:
                 // No player won this round yet, there is a tie.
                 // Put one card out there face down
                 // Allow the player to perform the play action again
                 this.gameState = GameState.WARRING;
-                System.out.println("No winner this round, going to war."); // -- DEBUG
                 break;
         }
         System.out.println("Player 1 cards in hand: " + player1.getCurrentHandSize());

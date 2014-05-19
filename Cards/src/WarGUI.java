@@ -22,10 +22,15 @@ public class WarGUI extends JFrame {
     private JPanel middleOfWindow;
     private JPanel computerPanel;
     private JPanel playerPanel;
+    private JProgressBar playerProgress;
 
     private WarController warController;
 
     public WarGUI(final WarController wc) {
+
+        this.setBackground(Color.BLACK);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         // Set constants
         this.setPreferredSize(WINDOWSIZE);
         this.setTitle(WINDOWTITLE);
@@ -34,6 +39,11 @@ public class WarGUI extends JFrame {
         middleOfWindow = new JPanel();
         computerPanel = new JPanel();
         playerPanel = new JPanel();
+        playerProgress = new JProgressBar(JProgressBar.VERTICAL);
+        playerProgress.setMaximum(52);
+        playerProgress.setMinimum(0);
+        playerProgress.setValue(0);
+        playerProgress.setPreferredSize(new Dimension(100, 500));
         middleOfWindow.add(computerPanel, BorderLayout.NORTH);
         middleOfWindow.add(playerPanel, BorderLayout.SOUTH);
 
@@ -52,38 +62,40 @@ public class WarGUI extends JFrame {
                 warController.player1Action();
 
                 // Update the view after the new cards are played
-                ArrayList<Card> playerCards = warController.getTableCards()[0];
-                ArrayList<Card> computerCards = warController.getTableCards()[1];
+                final ArrayList<Card> playerCards = warController.getTableCards()[0];
+                final ArrayList<Card> computerCards = warController.getTableCards()[1];
 
-                computerPanel.add( new CardImagePanel( computerCards.get( computerCards.size() - 1 ).imagePath, VERTICAL));
-                playerPanel.add( new CardImagePanel( playerCards.get( playerCards.size() - 1 ).imagePath, VERTICAL) );
+                computerPanel.add(new CardImagePanel(computerCards.get(computerCards.size() - 1).imagePath, VERTICAL));
+                playerPanel.add(new CardImagePanel(playerCards.get(playerCards.size() - 1).imagePath, VERTICAL));
+
                 playerPanel.revalidate();
                 computerPanel.revalidate();
                 refresh();
 
-                System.out.println(playerCards.get(playerCards.size()-1).imagePath); // -- DEBUG
-                System.out.println(computerCards.get(computerCards.size()-1).imagePath); // -- DEBUG
-
-
-
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(200);
                 } catch(InterruptedException ex) {
                     ex.printStackTrace();
                 }
 
                 warController.processLatestTable();
 
+
                 // Check the game state
                 if(warController.getGameState() == GameState.WARRING) {
                     computerPanel.add(new CardImagePanel(CARDBACKVERTICAL, VERTICAL));
                     playerPanel.add(new CardImagePanel(CARDBACKVERTICAL, VERTICAL));
                 } else {
-                    computerPanel.removeAll();
-                    playerPanel.removeAll();
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            computerPanel.removeAll();
+                            playerPanel.removeAll();
+                        }
+                    });
                 }
 
-                //refresh();
+                playerProgress.setValue(warController.player1.getCurrentHandSize());
             }
 
             @Override
@@ -113,11 +125,11 @@ public class WarGUI extends JFrame {
         this.add(playersOverturned, BorderLayout.SOUTH);
         this.add(computersOverturned, BorderLayout.NORTH);
         this.add(middleOfWindow, BorderLayout.CENTER);
+        this.add(playerProgress, BorderLayout.EAST);
     }
 
     // The function that will display the WarGUI window
     public void displayWindow() {
-        this.getContentPane().setBackground(Color.DARK_GRAY);
         this.pack();
         this.setVisible(true);
     }
