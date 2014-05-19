@@ -25,7 +25,8 @@ Represents the game table with a varying number of "sides" that players sit on, 
 A game to test the functionality of deck, card, player, and hand manipulation.
 Various classes are associated with just this game including WarGUI, WarController.
 
-
+**PokerHandEvaluator5Card** <br>
+A poker hand evaluator for hands that have 5 cards.
 
 Compile and run GUITest.java or WarGame.java
 
