@@ -1,6 +1,8 @@
 JavaCardGameSystem
 ==================
 
+[Read more words!](docs/)
+
 A card game system written in Java upon which it is possible to build various games
 
 <h2>Classes in this project</h2>
