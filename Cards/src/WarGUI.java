@@ -117,8 +117,6 @@ public class WarGUI extends JFrame {
             }
         });
 
-
-
         // Define layout stuff and add components to the window
         this.add(playersOverturned, BorderLayout.SOUTH);
         this.add(computersOverturned, BorderLayout.NORTH);

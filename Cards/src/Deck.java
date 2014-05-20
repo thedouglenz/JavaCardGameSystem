@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * Dealing a hand operation actually removes cards from the instance of deck, so it is important to check how large or small the
  * deck is. The same goes for removing top card.
  */
+
 public class Deck {
 
     final int NUMBEROFCARDS = 52;
